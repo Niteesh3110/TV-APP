@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import searchShow from '../api.js';
 import SearchBar from '../components/SearchBar';
 import ShowCard from '../components/ShowCard';
 import '../styles/home.css'
+import '../font.css';
 
 
 
@@ -18,26 +19,28 @@ const Home = () => {
 		}
 	};
 
+	useEffect(() => { document.body.style.backgroundColor = '#222831' }, [])
+
 	return(
-		<>
-		<nav className="navbar bg-body-tertiary" data-bs-theme="dark">
-		  <div className="container-fluid">
-		    <a className="navbar-brand">TV-SHOWS</a>
-		    <SearchBar onSearchResult={handleSearch}/>
-		  </div>
-		</nav>
-		<div>
-			<div className = 'row' id="cardsView">
-				{searchTerm.map((items, index) => (
-					<div className = "col-sm-6 col-md-4 col-lg-3 col-xl-3" style={{paddingBottom: '10px'}} key={index}>
-						<div className = 'card' id="cards">
-							<ShowCard key={index} shows={items}/>
+		<div className="home-container" id="main">
+			<nav className="navbar bg-body-tertiary" data-bs-theme="dark">
+			  <div className="container-fluid">
+			    <a href="/" className="navbar-brand">TV-SHOWS</a>
+			    <SearchBar onSearchResult={handleSearch}/>
+			  </div>
+			</nav>
+			<div>
+				<div className = 'row' id="cardsView">
+					{searchTerm.map((items, index) => (
+						<div className = "col-sm-6 col-md-4 col-lg-3 col-xl-3" style={{paddingBottom: '10px'}} key={index}>
+							<div className = 'card' id="cards">
+								<ShowCard key={index} shows={items}/>
+							</div>
 						</div>
-					</div>
-					))}
+						))}
+				</div>
 			</div>
 		</div>
-		</>
 		);
 };
 

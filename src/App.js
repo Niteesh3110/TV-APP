@@ -1,7 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Routes, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './pages/Home.js';
 import Summary from './pages/Summary.js';
+import BookingConfirmed from './components/BookingConfirmed.js';
 
 function App() {
   return(
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path = '/' element={<Home />}/>
         <Route path = '/summary/:showID' element={<Summary />}/>
+        <Route path = '/bookingconfirmed' element={<BookingConfirmed/>}/>
       </Routes>
     </Router>
     );

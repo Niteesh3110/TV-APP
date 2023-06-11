@@ -11,7 +11,20 @@ export const searchShow = async (query) => {
 	} catch(err) {
 		
 		console.error(err)
-		throw "error";
+		throw err;
+	};
+}
+
+export const searchShowById = async (id) => {
+	try {
+
+		const response = await axios.get(`${BASE_URL}/shows/${id}`);
+		return response.data;
+
+	} catch(err) {
+		
+		console.error(err)
+		throw err;
 	};
 }
 
